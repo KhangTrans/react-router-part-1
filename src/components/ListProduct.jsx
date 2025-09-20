@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
+import ProductCard from "./ProductCard";
 
 const ListProduct = () => {
   const [products] = useState([
@@ -89,35 +90,7 @@ const ListProduct = () => {
         <Row>
           {filteredProducts.map((product) => (
             <Col key={product.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
-              <Card className="h-100 shadow-sm">
-                <Card.Img
-                  variant="top"
-                  src={product.image}
-                  style={{
-                    height: "100%",
-                    width: "90%",
-                    objectFit: "cover",
-                    margin: "auto",
-                    paddingTop: "10px",
-                  }}
-                />
-                <Card.Body className="d-flex flex-column">
-                  <Card.Title className="d-flex justify-content-center align-items-center">
-                    {product.name}
-                  </Card.Title>
-                  <Card.Text className="d-flex justify-content-center align-items-center">
-                    {product.price.toLocaleString()} VND
-                  </Card.Text>
-                  <Button
-                    as={Link}
-                    to={`/product/${product.id}`}
-                    variant="primary"
-                    className="mt-auto"
-                  >
-                    Xem chi tiết
-                  </Button>
-                </Card.Body>
-              </Card>
+              <ProductCard product={product} />
             </Col>
           ))}
         </Row>
